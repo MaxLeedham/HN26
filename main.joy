@@ -2,8 +2,11 @@
 
 "board.joy" include .
 
-DEFINE random == "shuf -i 0-3 -n 1" system
+time srand .
 
-DEFINE randompos == random random .
+DEFINE random == rand 4 rem.
 
-randompos .
+createboard.
+
+dup random at.
+
