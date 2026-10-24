@@ -2,17 +2,14 @@
 
 "board.joy" include .
 
-DEFINE random == "shuf -i 0-3 -n 1" system
-
-DEFINE randompos == random random .
+# random() -> 0-3
+DEFINE random == rand 4 rem.
 
 # reset() -> empties the stack
 DEFINE reset = [] unstack .
 
 randompos .
 time srand .
-
-DEFINE random == rand 4 rem.
 
 createboard.
 
