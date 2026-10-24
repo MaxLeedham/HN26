@@ -10,3 +10,6 @@ DEFINE randompos == random random .
 DEFINE reset = [] unstack .
 
 randompos .
+
+# rollup : X Y Z -> Y Z X
+# rolldown : X Y Z -> Z X Y
