@@ -15,7 +15,7 @@ DEFINE reset == [] unstack .
 # rolldown : X Y Z -> Z X Y
 
 # insert(position, value, list) -> list
-DEFINE insert == rolldown dup rolldown dup [swap] dip 1 + drop [rolldown] dip cons rollup take swap concat .
+DEFINE insert == rolldown dup rolldown dup swapd 1 + drop rolldownd cons rollup take swap concat .
 
 DEFINE dip2 == [dip] cons dip .
 
@@ -27,3 +27,4 @@ createboard.
 dup random at.
 
 2 random insert .
+
