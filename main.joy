@@ -22,6 +22,7 @@ DEFINE dip2 == [dip] cons dip .
 # index(indx, array) -> element, array
 DEFINE index == dupd drop first .
 
+# dipn(n, [code...], rest_of_stack) -> modified rest of stack
 DEFINE dipn == [[dip] cons] dip 1 - dup 0 = [pop i] [dipn] branch .
 
 createboard.
