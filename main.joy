@@ -2,14 +2,22 @@
 
 "board.joy" include .
 
-DEFINE random == "shuf -i 0-3 -n 1" system
+# Seed rand with the current time
+time srand .
 
-DEFINE randompos == random random .
+# random() -> 0-3
+DEFINE random == rand 4 rem.
 
 # reset() -> empties the stack
-DEFINE reset = [] unstack .
-
-randompos .
+DEFINE reset == [] unstack .
 
 # rollup : X Y Z -> Y Z X
 # rolldown : X Y Z -> Z X Y
+# insert(position, value, list) -> list
+DEFINE insert == rolldown dup rolldown dup [swap] dip 1 + drop [rolldown] dip cons rollup take swap concat .
+
+createboard.
+
+dup random at.
+
+2 random insert .
