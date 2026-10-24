@@ -1,3 +1,9 @@
 2 setautoput .
 
 "board.joy" include .
+
+DEFINE random == "shuf -i 0-3 -n 1" system
+
+DEFINE randompos == random random .
+
+randompos .
