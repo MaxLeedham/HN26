@@ -13,8 +13,14 @@ DEFINE reset == [] unstack .
 
 # rollup : X Y Z -> Y Z X
 # rolldown : X Y Z -> Z X Y
+
 # insert(position, value, list) -> list
 DEFINE insert == rolldown dup rolldown dup [swap] dip 1 + drop [rolldown] dip cons rollup take swap concat .
+
+DEFINE dip2 == [dip] cons dip .
+
+# index(indx, array) -> element, array
+DEFINE index == dupd drop first .
 
 createboard.
 
