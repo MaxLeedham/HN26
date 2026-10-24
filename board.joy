@@ -1,6 +1,11 @@
 # Pushes the empty board onto the top of the stack
+# createboard() -> board
 DEFINE createboard == [[0 0 0 0] [0 0 0 0] [0 0 0 0] [0 0 0 0]].
 
+# testboard() -> board
 DEFINE testboard == [[0 1 2 3] [4 5 6 7] [8 9 10 11] [12 13 14 15]].
 
+# printboard(board) -> board
 DEFINE printboard == dup 0 at put "\n" putchars dup 1 at put "\n" putchars dup 2 at put "\n" putchars dup 3 at put "\n" putchars.
+
+DEFINE shiftleft == .
