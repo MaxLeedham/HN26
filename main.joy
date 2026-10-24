@@ -11,7 +11,11 @@ DEFINE random == rand 4 rem.
 # reset() -> empties the stack
 DEFINE reset == [] unstack .
 
+# insert(position, value, list) -> list
+DEFINE insert == rolldown dup rolldown dup [swap] dip 1 + drop [rolldown] dip cons rollup take swap concat .
+
 createboard.
 
 dup random at.
 
+2 random insert .
