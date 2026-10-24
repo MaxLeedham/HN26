@@ -1,2 +1,4 @@
 # Pushes the empty board onto the top of the stack
 DEFINE createboard == [[0 0 0 0] [0 0 0 0] [0 0 0 0] [0 0 0 0]].
+
+DEFINE print == dup .
