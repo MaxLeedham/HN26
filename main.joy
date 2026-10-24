@@ -2,14 +2,14 @@
 
 "board.joy" include .
 
+# Seed rand with the current time
+time srand .
+
 # random() -> 0-3
 DEFINE random == rand 4 rem.
 
 # reset() -> empties the stack
 DEFINE reset = [] unstack .
-
-randompos .
-time srand .
 
 createboard.
 
