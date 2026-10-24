@@ -19,6 +19,12 @@ DEFINE insert == rolldown dup rolldown dup swapd 1 + drop rolldownd cons rollup 
 
 DEFINE dip2 == [dip] cons dip .
 
+#todo - implement for specific key directions
+DEFINE wpressed == "w pressed" puts.
+DEFINE apressed == 'a .
+DEFINE spressed == 's .
+DEFINE dpressed == 'd .
+
 # index(indx, array) -> element, array
 DEFINE index == dupd drop first .
 
@@ -34,3 +40,8 @@ dup random at.
 # check wasd and repeat if invalid.
 stdin fgetch swap pop
 ["wasd" in not] [pop stdin fgetch swap pop] while.
+
+["w" in] [wpressed] [] ifte .
+["a" in] [apressed] [] ifte .
+["s" in] [spressed] [] ifte .
+["d" in] [dpressed] [] ifte .
