@@ -1,9 +1,12 @@
-2 setautoput .
+2 setautoput . # CHANGE TO `0 setautoput .` BEFORE THE END
 
 "board.joy" include .
 
 DEFINE random == "shuf -i 0-3 -n 1" system
 
 DEFINE randompos == random random .
+
+# reset() -> empties the stack
+DEFINE reset = [] unstack .
 
 randompos .
