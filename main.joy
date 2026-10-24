@@ -31,3 +31,8 @@ dup random at.
 
 2 random insert .
 
+stdin fgetch swap pop .
+
+dup 'w = ['a =] dip or.
+# a = or s = or d = or .
+#.
