@@ -9,7 +9,7 @@ time srand .
 DEFINE random == rand 4 rem.
 
 # reset() -> empties the stack
-DEFINE reset = [] unstack .
+DEFINE reset == [] unstack .
 
 createboard.
 
