@@ -31,8 +31,6 @@ dup random at.
 
 2 random insert .
 
-# stdin fgetch swap pop .
-
-dup 'w = ['a =] dip or.
-# a = or s = or d = or .
-#.
+# check wasd and repeat if invalid.
+stdin fgetch swap pop
+["wasd" in not] [pop stdin fgetch swap pop] while.
