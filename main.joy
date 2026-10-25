@@ -1,4 +1,4 @@
-2 setautoput . # CHANGE TO `0 setautoput .` BEFORE THE END
+0 setautoput . # CHANGE TO `0 setautoput .` BEFORE THE END
 
 "board.joy" include .
 
@@ -57,7 +57,7 @@ insertrandom2.
 swap.
 insertrandom2.
 
-[[[2 2 2 2] [0 0 2 2] [0 0 0 2] [2 2 0 0]]] unstack .
+# [[[2 2 2 2] [0 0 2 2] [0 0 0 2] [2 2 0 0]]] unstack .
 printboard.
 
 # check wasd and repeat if invalid.
@@ -71,6 +71,15 @@ printboard.
     ["a" in] [pop shiftleft] [] ifte
     ["s" in] [pop shiftdown] [] ifte
     ["d" in] [pop shiftright] [] ifte
+
+    dup [rowfull] all
+
+    ["all rows full" puts] [] branch
+
+
+    #TODO pick random row to change
+    random
+    insertrandom2
 
     printboard
 ] while .
