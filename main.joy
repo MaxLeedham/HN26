@@ -19,6 +19,7 @@ DEFINE insert == rolldown dup rolldown dup swapd 1 + drop rolldownd cons rollup 
 
 DEFINE dip2 == [dip] cons dip .
 
+<<<<<<< HEAD
 #todo - implement for specific key directions
 DEFINE wpressed == "w pressed" puts.
 DEFINE apressed == 'a .
@@ -26,6 +27,8 @@ DEFINE spressed == 's .
 DEFINE dpressed == 'd .
 
 # get at index in array, discard index
+=======
+>>>>>>> fb695c3 (Game loop)
 # index(indx, array) -> element, array
 DEFINE index == dupd drop first .
 
@@ -58,12 +61,16 @@ insertrandom2.
 printboard.
 
 # check wasd and repeat if invalid.
-stdin fgetch swap pop
-["wasd" in not] [pop stdin fgetch swap pop] while.
 
-["w" in] [pop shiftup] [] ifte .
-["a" in] [pop shiftleft] [] ifte .
-["s" in] [pop shiftright] [] ifte .
-["d" in] [pop shiftdown] [] ifte .
+[true]
+[
+    stdin fgetch swap pop
+    ["wasd" in not] [pop stdin fgetch swap pop] while
 
-printboard.
+    ["w" in] [pop shiftup] [] ifte
+    ["a" in] [pop shiftleft] [] ifte
+    ["s" in] [pop shiftdown] [] ifte
+    ["d" in] [pop shiftright] [] ifte
+
+    printboard
+] while .
