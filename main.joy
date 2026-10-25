@@ -54,20 +54,16 @@ insertrandom2.
 swap.
 insertrandom2.
 
-# check wasd and repeat if invalid. 
+[[[2 2 2 2] [0 0 2 2] [0 0 0 2] [2 2 0 0]]] unstack .
+printboard.
+
+# check wasd and repeat if invalid.
 stdin fgetch swap pop
 ["wasd" in not] [pop stdin fgetch swap pop] while.
 
-["w" in] [wpressed] [] ifte .
-["a" in] [apressed] [] ifte .
-["s" in] [spressed] [] ifte .
-["d" in] [dpressed] [] ifte .
+["w" in] [pop shiftup] [] ifte .
+["a" in] [pop shiftleft] [] ifte .
+["s" in] [pop shiftright] [] ifte .
+["d" in] [pop shiftdown] [] ifte .
 
-dup [rowfull] all.
-
-["all rows full" puts] [] branch.
-
-
-#TODO pick random row to change
-#random.
-
+printboard.
