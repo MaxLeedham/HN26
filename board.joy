@@ -25,4 +25,19 @@ DEFINE padleft == dup size 4 = [] [0 swap cons padleft] branch.
 DEFINE shiftrowright == filternonzero dup size dup 1 <= [pop padleft] [1 - shiftrowrighthelper] branch.
 
 # shiftright(board) -> board
-DEFINE shiftright == 0 index shiftrowright 0 insert 1 index shiftrowright 1 insert 2 index shiftrowright 2 insert 3 index shiftrowright 3 insert.
+DEFINE shiftright == 0 index shiftrowright padleft 0 insert 1 index shiftrowright padleft 1 insert 2 index shiftrowright padleft 2 insert 3 index shiftrowright padleft 3 insert.
+
+DEFINE transpose == (* From seqlib.joy library file *)
+	[ [null] [true] [[null] some] ifte ]
+	[ pop [] ]
+	[ [[first] map] [[rest] map] cleave ]
+	[ cons ]
+	linrec.
+
+DEFINE shiftdown == transpose shiftright transpose .
+
+DEFINE reverse == 0 index [1 index] dip [2 index] 2 dipn [3 index] 3 dipn [0 insert] 3 dipn [1 insert] 2 dipn [2 insert] dip 3 insert .
+DEFINE reverseinner == 0 index reverse 0 insert 1 index reverse 1 insert 2 index reverse 2 insert 3 index reverse 3 insert. 
+
+DEFINE shiftleft == reverseinner shiftright reverseinner.
+DEFINE shiftup == transpose shiftleft transpose .
