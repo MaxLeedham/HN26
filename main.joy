@@ -25,26 +25,36 @@ DEFINE apressed == 'a .
 DEFINE spressed == 's .
 DEFINE dpressed == 'd .
 
+# get at index in array, discard index
 # index(indx, array) -> element, array
 DEFINE index == dupd drop first .
+
+# get at index in array, keep index
+# getatindex(index, array) -> element, index, array
+DEFINE getatindex == dupd dup rollup at.
 
 # dipn(n, [code...], rest_of_stack) -> modified rest of stack
 DEFINE dipn == [[dip] cons] dip 1 - dup 0 = [pop i] [dipn] branch .
 
-DEFINE insertrandom2 == dup rolldown dup rollup at 2 random insert swap insert.
+DEFINE insertrandom2 == getatindex 2 random insert swap insert.
+
+DEFINE rowfull == 0 swap in not.
 
 createboard.
 
+#pick two random rows to insert new elements into
+#todo - should probably allow two of the same row just in different positions.
 random.
 random.
 # ensure they are not matching
 [=] [pop random] while.
 
-rolldown.
+rollup.
 insertrandom2.
+swap.
 insertrandom2.
 
-# check wasd and repeat if invalid.
+# check wasd and repeat if invalid. 
 stdin fgetch swap pop
 ["wasd" in not] [pop stdin fgetch swap pop] while.
 
@@ -52,3 +62,12 @@ stdin fgetch swap pop
 ["a" in] [apressed] [] ifte .
 ["s" in] [spressed] [] ifte .
 ["d" in] [dpressed] [] ifte .
+
+dup [rowfull] all.
+
+["all rows full" puts] [] branch.
+
+
+#TODO pick random row to change
+#random.
+
