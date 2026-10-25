@@ -13,8 +13,16 @@ DEFINE filternonzero == [0 !=] filter.
 
 # mergeindex(index, row) -> index-1, row
 DEFINE mergeindex == dup swapd [dup] 2 dipn index swapd [1 - index] dip = [dupd swap index 2 * [dup] 2 dipn rolldown insert dupd 0 rolldown 1 - insert swap 1 -] [swap 1 -] branch .
-# shiftrow(row) -> row
-DEFINE shiftrow == .
 
-# shiftleft(board) -> board
-DEFINE shiftleft == .
+# shiftrowrighthelper(index, row) -> index, row
+DEFINE shiftrowrighthelper == dup 0 = [pop] [dupd mergeindex [filternonzero] dip dupd rolldownd [equal] dip swap [pop padleft] [shiftrowrighthelper] branch] branch.
+
+# [2, 4] -> [0, 0, 2, 4]
+# padleft(row) -> row
+DEFINE padleft == dup size 4 = [] [0 swap cons padleft] branch.
+
+# shiftrowright(row) -> row
+DEFINE shiftrowright == filternonzero dup size dup 1 <= [pop padleft] [1 - shiftrowrighthelper] branch.
+
+# shiftright(board) -> board
+DEFINE shiftright == 0 index shiftrowright 0 insert 1 index shiftrowright 1 insert 2 index shiftrowright 2 insert 3 index shiftrowright 3 insert.
