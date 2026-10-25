@@ -31,11 +31,18 @@ DEFINE index == dupd drop first .
 # dipn(n, [code...], rest_of_stack) -> modified rest of stack
 DEFINE dipn == [[dip] cons] dip 1 - dup 0 = [pop i] [dipn] branch .
 
+DEFINE insertrandom2 == dup rolldown dup rollup at 2 random insert swap insert.
+
 createboard.
 
-dup random at.
+random.
+random.
+# ensure they are not matching
+[=] [pop random] while.
 
-2 random insert .
+rolldown.
+insertrandom2.
+insertrandom2.
 
 # check wasd and repeat if invalid.
 stdin fgetch swap pop
